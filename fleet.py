@@ -8,6 +8,6 @@ class Fleet:
 
     def create_fleet(self):
 
-        for i in range(3)
+        for i in range(3):
             name = "Robot" + str(i + 1)
             self.robots.append(Robot(name))
