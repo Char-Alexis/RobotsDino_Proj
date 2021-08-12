@@ -1,4 +1,4 @@
-
+from weapon import *
 
 
 class Robot:

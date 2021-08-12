@@ -1,6 +1,3 @@
-
-
-
 from dino import Dinosaur
 
 

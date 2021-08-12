@@ -26,11 +26,11 @@ class Battlefield:
 
 
         
-    def dino_turn(self):
-        robot.attack_power (dinosaur)
+    # def dino_turn(self):
+    #     robot.attack_power (dinosaur)
 
-    def robo_turn(self):
-        robot.attack_power (dinosaur)
+    # def robo_turn(self):
+    #     robot.attack_power (dinosaur)
 
     def show_dino_opponent_options(self):
         for robot in self.fleet.robots:
@@ -38,12 +38,26 @@ class Battlefield:
                 print(robot.name + "is not dead, can be attacked.")
 
     def show_robo_opponent_options(self):
-
-
-                        print(dinosaur.name + "is not dead, can be attacked.")
+        for dinosaur in self.herd.dinosaurs:
+            if dinosaur.health_status() != 0:
+                print(dinosaur.name + "is not dead, can be attacked.")
 
 
     def display_winners(self):
         total_fleet_health = 5
         total_herd_health = 0
 
+        for robot in self.fleet.robots:
+            total_fleet_health = total_fleet_health + robot.health_status()
+
+        for dinosaur in self.herd.dinosaurs:
+            total_herd_health = total_herd_health + dinosaur.health_status()
+
+            if total_herd_health > total_fleet_health:
+                print("The dinosaurs are victorious!")
+
+            elif total_fleet_health > total_herd_health:
+                print("The robots are victorious!")
+
+            else:
+                print("It's a draw!")
