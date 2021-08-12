@@ -1,12 +1,14 @@
-from fleet import *
+from fleet import Fleet
 from herd import Herd
 
 
 class Battlefield:
     def __init__(self):
         self.herd = Herd()
-        
+        self.herd.create_herd
         self.fleet= Fleet()
+        self.fleet.create_fleet() 
+        # create an empty fleet, fills list with 3 robots
 
     def run_game(self):
         self.battle()
@@ -17,13 +19,13 @@ class Battlefield:
     def battle(self):
         total_herd_health = 0
         for dinosaur in self.herd.dinosaurs:
-            total_herd_health = total_herd_health + dinosaur.health.status
+            total_herd_health = total_herd_health + dinosaur.health.status()
 
             while total_herd_health > 0:
                 self.robo_turn(self.fleet.robots[0])
 
                 for dinosaur in self.herd.dinosaurs:
-                    total_herd_health = total_herd_health + dinosaur.health.status
+                    total_herd_health = total_herd_health + dinosaur.health.status()
 
 
 
@@ -31,6 +33,7 @@ class Battlefield:
         for robot in self.fleet.robots:
             if robot.health.status() !=0:
                 dinosaur.attack(robot)
+                break
                 
 
     def robo_turn(self, robot):
@@ -49,8 +52,8 @@ class Battlefield:
 
 
     def display_winners(self):
-        total_fleet_health = 5
-        total_herd_health = 0
+        # total_fleet_health = 5
+        # total_herd_health = 0
 
         for robot in self.fleet.robots:
             total_fleet_health = total_fleet_health + robot.health_status()
