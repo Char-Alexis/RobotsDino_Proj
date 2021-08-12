@@ -1,4 +1,4 @@
-from fleet import Fleet
+from fleet import *
 from herd import Herd
 
 
@@ -9,6 +9,7 @@ class Battlefield:
         self.fleet= Fleet()
 
     def run_game(self):
+        self.battle()
 
     def display_welcome(self):
         print("Welcome to Robots vs. Dinosaurs!")
@@ -21,16 +22,20 @@ class Battlefield:
             while total_herd_health > 0:
                 self.robo_turn(self.fleet.robots[0])
 
-                # for dinosaur in self.herd.dinosaurs:
-                #     total_herd_health = total_herd_health + dinosaur.health.status
+                for dinosaur in self.herd.dinosaurs:
+                    total_herd_health = total_herd_health + dinosaur.health.status
 
 
-        
-    # def dino_turn(self):
-    #     robot.attack_power (dinosaur)
 
-    # def robo_turn(self):
-    #     robot.attack_power (dinosaur)
+    def dino_turn(self, dinosaur):
+        for robot in self.fleet.robots:
+            if robot.health.status() !=0:
+                dinosaur.attack(robot)
+                
+
+    def robo_turn(self, robot):
+        for dinosaur in self.herd.dinosaurs:
+            robot.attack(dinosaur)
 
     def show_dino_opponent_options(self):
         for robot in self.fleet.robots:
