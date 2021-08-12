@@ -8,6 +8,7 @@ class Dinosaur:
         self.health = 10
 
     def attack(self, robot):
-        robot.health 
+        robot.health = robot.health - self.attack_power
 
     def health_status(self):
+        return self.health
